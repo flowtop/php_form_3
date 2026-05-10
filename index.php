@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (
         empty($full_name) ||
         !preg_match('/^[a-zA-Zа-яА-ЯёЁ\s]+$/u', $full_name) ||
-        mb_strlen($full_name) > 150
+        strlen($full_name) > 150
     ) {
         $errors[] = 'ФИО должно содержать только буквы и пробелы (не более 150 символов).';
     }
