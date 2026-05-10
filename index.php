@@ -184,68 +184,42 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <form method="POST">
 
-                <p>
-                    ФИО:<br>
-                    <input type="text" name="full_name" required>
-                </p>
+                <input type="text" name="full_name" placeholder="ФИО" required>
 
-                <p>
-                    Телефон:<br>
-                    <input type="text" name="phone" required>
-                </p>
+                <input type="text" name="phone" placeholder="Номер телефона" required>
 
-                <p>
-                    Email:<br>
-                    <input type="email" name="email" required>
-                </p>
+                <input type="email" name="email" placeholder="Email" required>
 
-                <p>
-                    Дата рождения:<br>
-                    <input type="date" name="birth_date" required>
-                </p>
+                <input type="date" name="birth_date" placeholder="Дата рождения" required>
 
-                <p>
-                    Пол:<br>
+                <h2>Ваш пол:</h2>
 
-                    <label class="radio_btn">
-                        <input type="radio" name="gender" value="male" required>
-                        Мужской
-                    </label>
+                <label class="radio_btn">
+                    <input type="radio" name="gender" value="male" required>
+                    Мужской
+                </label>
 
-                    <label class="radio_btn">
-                        <input type="radio" name="gender" value="female">
-                        Женский
-                    </label>
-                </p>
+                <label class="radio_btn">
+                    <input type="radio" name="gender" value="female">
+                    Женский
+                </label>
+                <select name="languages[]" multiple required size="11">
 
-                <p>
-                    Любимые языки программирования:<br>
+                    <?php foreach ($languages as $lang): ?>
 
-                    <select name="languages[]" multiple required size="11">
+                    <option value="<?= htmlspecialchars($lang) ?>">
+                        <?= htmlspecialchars($lang) ?>
+                    </option>
 
-                        <?php foreach ($languages as $lang): ?>
+                    <?php endforeach; ?>
 
-                        <option value="<?= htmlspecialchars($lang) ?>">
-                            <?= htmlspecialchars($lang) ?>
-                        </option>
+                </select>
+                <textarea name="biography" rows="5" cols="40" placeholder="Ваше сообщение" required></textarea>
 
-                        <?php endforeach; ?>
-
-                    </select>
-                </p>
-
-                <p>
-                    Биография:<br>
-
-                    <textarea name="biography" rows="5" cols="40" required></textarea>
-                </p>
-
-                <p>
-                    <label class="form_checkbox">
-                        <input type="checkbox" name="contract" required>
-                        С контрактом ознакомлен
-                    </label>
-                </p>
+                <label class="form_checkbox">
+                    <input type="checkbox" name="contract" required>
+                    С контрактом ознакомлен
+                </label>
 
                 <button type="submit">
                     Отправить форму
